@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Dashboard</title>
+    <style>
+        /* Design */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ff9933 13.33%, #ffffff 53.33% , #138808 86.66%);
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            font-size: 10px;
+            display: flex;
+            text-align: center;
+            background-color: #404040;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        h1 {
+            font-size: 1em;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .exam-section {
+            flex: 1;
+            background: rgb(238, 227, 227);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .exam-section h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .exam-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .exam-card button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff6600;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .exam-card button:hover {
+            background-color: #cc5200;
+        }
+
+        .exam-card {
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+        }
+
+        .exam-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .exam-card p {
+            margin: 5px 0;
+        }
+
+        /* Navbar styles */
+        .heading {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            font-size: 15px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar-menu li {
+            margin: 0;
+        }
+
+        .navbar-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 5px;
+        }
+
+        .navbar-menu a:hover, .navbar-menu a.active {
+            background-color: #575757;
+        }
+
+        .navbar-search {
+            display: flex;
+            gap: 10px;
+        }
+
+        .navbar-search input[type="text"] {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .navbar-search button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff6600;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .navbar-search button:hover {
+            background-color: #cc5200;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #404040;
+            color: #fff;
+            padding: 20px 0;
+            border-top: 1px solid #e9ecef;
+            font-size: 10px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+        }
+
+        .footer-section h3 {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section p,
+        .footer-section address {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-media {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .social-media li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .social-icon {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 10px;
+            font-size: 14px;
+            border-top: 1px solid #e9ecef;
+            margin-top: 20px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="navbar-menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#dashboard" class="active">Dashboard</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#profile">Profile</a></li>
+            </ul>
+            <form class="navbar-search" action="#" method="get">
+                <input type="text" placeholder="Search..." name="search">
+                <button type="submit">Search</button>
+            </form>
+        </nav>
+    </header>
+
+    <div class="container">
+        <header class="heading">
+            <h1>Exam Dashboard</h1>
+        </header>
+        <!--Main section where active exams and the exams you have appeared are listed-->
+        <main>
+            <section class="exam-section">
+                <h4>Active Exams</h4>
+                <div class="exam-list">
+                    <div class="exam-card">
+                        <h5>Math Exam</h5>
+                        <p>Start Date: 2024-09-20</p>
+                        <p>Status: Active</p>
+                        <button type="submit">View</button>
+                    </div>
+                    <div class="exam-card">
+                        <h5>Science Exam</h5>
+                        <p>Start Date: 2024-09-25</p>
+                        <p>Status: Active</p>
+                        <button type="submit">View</button>
+                    </div>
+                </div>
+            </section>
+            <section class="exam-section">
+                <h4>Exams Appeared</h4>
+                <div class="exam-list">
+                    <div class="exam-card">
+                        <h5>History Exam</h5>
+                        <p>Date Appeared: 2024-08-15</p>
+                        <p>Status: Completed</p>
+                        <button type="submit">View</button>
+                    </div>
+                    <div class="exam-card">
+                        <h5>Geography Exam</h5>
+                        <p>Date Appeared: 2024-09-10</p>
+                        <p>Status: Completed</p>
+                        <button type="submit">View</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Providing reliable and updated information for government exams.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Exams</a></li>
+                    <li><a href="#">Results</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <address>
+                    <p>Email: support@example.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </address>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <ul class="social-media">
+                    <li><a href="#" class="social-icon facebook">Facebook</a></li>
+                    <li><a href="#" class="social-icon twitter">Twitter</a></li>
+                    <li><a href="#" class="social-icon linkedin">LinkedIn</a></li>
+                    <li><a href="#" class="social-icon instagram">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Government Exam Dashboard. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
